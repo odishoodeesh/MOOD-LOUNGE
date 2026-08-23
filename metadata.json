@@ -1,0 +1,6 @@
+{
+  "name": "Mood Lounge Invitation",
+  "description": "A luxury interactive invitation card experience for Mood Lounge featuring smooth envelope opening animations and VIP card reveal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

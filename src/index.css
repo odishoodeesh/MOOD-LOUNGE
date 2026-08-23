@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-garamond: 'Cormorant Garamond', serif;
+    --font-italiana: 'Italiana', serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+    /* Theme Anchor Colors */
+    --color-primary: #EBDEBE;
+    --color-secondary: #DE6D27;
+    --color-main: #EBDEBE;
+  }
+
+  html, body, #root {
+    height: 100%;
+    height: 100dvh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    touch-action: manipulation;
+    background-color: #EBDEBE;
+    color: #24180F;
+  }
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel);
+}
+
+.font-garamond {
+  font-family: var(--font-garamond);
+}
+
+.font-italiana {
+  font-family: var(--font-italiana);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+.font-body {
+  font-family: var(--font-sans);
+}
+
+/* Luxury #EBDEBE (Main) & #DE6D27 (Secondary) Gradients & Textures */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #FAF8F2 0%, #EBDEBE 40%, #DE6D27 80%, #F6EBCE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.amber-text-gradient {
+  background: linear-gradient(135deg, #FAF4E6 0%, #EBDEBE 30%, #DE6D27 75%, #F79A59 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.secondary-gradient-btn {
+  background: linear-gradient(135deg, #DE6D27 0%, #E87A36 50%, #C35615 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.secondary-gradient-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(235, 222, 190, 0.4) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: amberShimmer 4s infinite linear;
+}
+
+@keyframes amberShimmer {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
+}
+
+@keyframes steamRise1 {
+  0% { transform: translateY(0) scaleY(1) scaleX(1); opacity: 0.7; }
+  50% { transform: translateY(-8px) scaleY(1.1) scaleX(1.05) skewX(2deg); opacity: 0.9; }
+  100% { transform: translateY(-16px) scaleY(1.2) scaleX(1.1) skewX(-2deg); opacity: 0; }
+}
+
+@keyframes steamRise2 {
+  0% { transform: translateY(0) scaleY(1) scaleX(1); opacity: 0.6; }
+  50% { transform: translateY(-10px) scaleY(1.15) scaleX(0.95) skewX(-3deg); opacity: 0.85; }
+  100% { transform: translateY(-20px) scaleY(1.25) scaleX(1.15) skewX(2deg); opacity: 0; }
+}
+
+.animate-steam-1 {
+  animation: steamRise1 3.5s ease-in-out infinite;
+}
+
+.animate-steam-2 {
+  animation: steamRise2 4.2s ease-in-out infinite 0.8s;
+}
+
+/* 3D Envelope Transformations */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Luminous Champagne Paper Texture with Warm Amber and Ivory Grain */
+.paper-texture-ivory {
+  background-color: #FAF7F0;
+  background-image: 
+    radial-gradient(#DECFA9 0.8px, transparent 0.8px),
+    radial-gradient(rgba(222, 109, 39, 0.05) 0.8px, #FAF7F0 0.8px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+
+.paper-texture-dark {
+  background-color: #140F0A;
+  background-image: radial-gradient(rgba(222, 109, 39, 0.12) 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
