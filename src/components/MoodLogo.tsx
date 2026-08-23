@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import logoGreen from '../assets/logo-green.png';
-import logoLight from '../assets/logo-light.png';
+import logoGreen from '../assets/Logo-Green.png';
 import moodBeige from '../assets/mood-beige.png';
-import moodGreen from '../assets/mood-green.png';
 import moodWhite from '../assets/mood-white.png';
 
 interface MoodLogoProps {
@@ -42,21 +40,17 @@ export const MoodSteam: React.FC<{
 };
 
 export const MoodLogo: React.FC<MoodLogoProps> = ({
-  variant = 'champagne',
+  variant = 'green',
   className = '',
   size = 'md',
 }) => {
   const [hasError, setHasError] = useState(false);
 
-  let logoSrc = logoLight;
-  if (variant === 'noir' || variant === 'green') {
-    logoSrc = logoGreen;
-  } else if (variant === 'white') {
+  let logoSrc = logoGreen;
+  if (variant === 'white') {
     logoSrc = moodWhite;
-  } else if (variant === 'champagne') {
-    logoSrc = logoLight;
   } else {
-    logoSrc = logoLight;
+    logoSrc = logoGreen;
   }
 
   const sizeClasses = {
@@ -87,7 +81,7 @@ export const MoodLogo: React.FC<MoodLogoProps> = ({
     <div className={`relative flex items-center justify-center select-none ${className}`}>
       <img
         src={logoSrc}
-        alt="Mood Lounge"
+        alt="Mood Lounge Logo"
         className={`w-auto object-contain transition-all duration-300 drop-shadow-[0_2px_12px_rgba(222,109,39,0.2)] ${sizeClasses}`}
         referrerPolicy="no-referrer"
         loading="eager"
