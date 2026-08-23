@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import logoGreen from '../assets/logo-green.png';
+import logoLight from '../assets/logo-light.png';
+import moodBeige from '../assets/mood-beige.png';
+import moodGreen from '../assets/mood-green.png';
+import moodWhite from '../assets/mood-white.png';
 
 interface MoodLogoProps {
   variant?: 'champagne' | 'noir' | 'gold' | 'white' | 'green' | 'light';
@@ -41,16 +46,17 @@ export const MoodLogo: React.FC<MoodLogoProps> = ({
   className = '',
   size = 'md',
 }) => {
-  // Use the official high-resolution logo from https://ibb.co/JWSv4tXz
-  let logoSrc = '/logo-light.png';
+  const [hasError, setHasError] = useState(false);
+
+  let logoSrc = logoLight;
   if (variant === 'noir' || variant === 'green') {
-    logoSrc = '/logo-green.png';
+    logoSrc = logoGreen;
   } else if (variant === 'white') {
-    logoSrc = '/mood-white.png';
+    logoSrc = moodWhite;
   } else if (variant === 'champagne') {
-    logoSrc = '/logo-light.png';
+    logoSrc = logoLight;
   } else {
-    logoSrc = '/logo-light.png';
+    logoSrc = logoLight;
   }
 
   const sizeClasses = {
@@ -62,6 +68,21 @@ export const MoodLogo: React.FC<MoodLogoProps> = ({
     custom: '',
   }[size];
 
+  if (hasError) {
+    // Vector typography fallback
+    return (
+      <div className={`flex flex-col items-center justify-center select-none ${className}`}>
+        <MoodSteam color="#DE6D27" className="w-8 h-8 -mb-1" />
+        <span className="font-cinzel text-xl sm:text-2xl font-bold tracking-[0.3em] uppercase text-[#24180F]">
+          MOOD
+        </span>
+        <span className="font-montserrat text-[9px] tracking-[0.4em] uppercase text-[#DE6D27] font-semibold -mt-0.5">
+          LOUNGE
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className={`relative flex items-center justify-center select-none ${className}`}>
       <img
@@ -70,6 +91,7 @@ export const MoodLogo: React.FC<MoodLogoProps> = ({
         className={`w-auto object-contain transition-all duration-300 drop-shadow-[0_2px_12px_rgba(222,109,39,0.2)] ${sizeClasses}`}
         referrerPolicy="no-referrer"
         loading="eager"
+        onError={() => setHasError(true)}
       />
     </div>
   );
@@ -82,7 +104,7 @@ export const MoodVerticalMotif: React.FC<{
   return (
     <div className={`flex flex-col items-center justify-center opacity-10 pointer-events-none select-none ${className}`}>
       <img
-        src="/mood-beige.png"
+        src={moodBeige}
         alt="Mood Emblem Motif"
         className="w-56 sm:w-72 max-h-[75vh] object-contain"
         referrerPolicy="no-referrer"
@@ -115,7 +137,7 @@ export const MoodWaxSeal: React.FC<{
           <div className="w-full h-full rounded-full border border-dashed border-[#EBDEBE]/75 flex flex-col items-center justify-center relative p-1 overflow-hidden">
             {/* Official Logo inside Seal */}
             <img
-              src="/mood-beige.png"
+              src={moodBeige}
               alt="Mood Lounge Seal"
               className="w-12 sm:w-14 h-auto object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)] filter brightness-110"
               referrerPolicy="no-referrer"
